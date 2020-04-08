@@ -19,7 +19,13 @@ export class DetailPokemonComponent implements OnInit {
     ngOnInit(): void {
         // snapchot sert à dire que nous voulons récuperer les paramètres de manière synchrone
         let id = +this.route.snapshot.paramMap.get('id'); // recupérer les paramètres
-        this.pokemon = this.pokemonsService.getPokemon(id);
+        this.pokemonsService.getPokemon(id)
+        .subscribe(pokemon => this.pokemon = pokemon);
+    }
+
+    delete(pokemon: Pokemon): void {
+        this.pokemonsService.deletePokemon(pokemon)
+        .subscribe(_ => this.goBack());
     }
 
     goBack(): void {
