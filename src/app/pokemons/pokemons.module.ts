@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PokemonRoutingModule } from './pokemons-routing.module';
+import { FormsModule } from '@angular/forms';
 
 import { ListPokemonComponent } from './list-pokemon.component';
 import { DetailPokemonComponent } from './detail-pokemon.component';
@@ -9,10 +9,10 @@ import { PokemonTypeColorPipe } from './pokemon-type-color.pipe';
 import { PokemonsService } from './pokemons.service';
 import { PokemonSearchComponent } from './search-pokemon.component';
 import { LoaderComponent } from '../loader.component';
-
-import { FormsModule } from '@angular/forms';
+import { AuthGuard } from '../auth-guard.service';
 import { EditPokemonComponent } from './edit-pokemon.component';
 import { PokemonFormComponent } from './pokemon-form.component';
+import { PokemonRoutingModule } from './pokemons-routing.module';
 
 @NgModule({
     imports: [
@@ -30,6 +30,6 @@ import { PokemonFormComponent } from './pokemon-form.component';
         BorderCardDirective,
         PokemonTypeColorPipe
     ],
-    providers: [PokemonsService]
+    providers: [PokemonsService, AuthGuard]
 })
 export class PokemonsModule { }
